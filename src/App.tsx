@@ -4,6 +4,7 @@ import ExplainSheet from "./components/ExplainSheet";
 import { ExplainProvider } from "./context/ExplainContext";
 import Homepage from "./pages/Homepage";
 import JobSearchResults from "./pages/JobSearchResults";
+import AiSearch from "./pages/AiSearch";
 import ComingSoon from "./pages/ComingSoon";
 
 export default function App() {
@@ -16,7 +17,7 @@ export default function App() {
             <Route path="/" element={<Homepage />} />
             <Route path="/jobs" element={<JobSearchResults />} />
             <Route path="/jobs/:id" element={<ComingSoon label="Job Details" />} />
-            <Route path="/ai-search" element={<ComingSoon label="Naukri AI — Conversational Search" />} />
+            <Route path="/ai-search" element={<AiSearch />} />
             <Route path="/resume" element={<ComingSoon label="Resume Analysis" />} />
             <Route path="/compare" element={<ComingSoon label="Job Comparison" />} />
             <Route path="/recommendations" element={<ComingSoon label="Recommendation Transparency" />} />
