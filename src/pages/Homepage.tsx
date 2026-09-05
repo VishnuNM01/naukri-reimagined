@@ -98,10 +98,18 @@ export default function Homepage() {
             View all <ChevronRight size={16} />
           </button>
         </div>
-        <p className="text-sm mb-6 text-ink-soft">
-          Based on your saved skills and preferences. Match scores are estimates — not
-          guarantees of fit.
-        </p>
+        <div className="flex items-center justify-between mb-6">
+          <p className="text-sm text-ink-soft">
+            Based on your saved skills and preferences. Match scores are estimates — not
+            guarantees of fit.
+          </p>
+          <button
+            onClick={() => navigate("/recommendations")}
+            className="text-sm text-primary hover:underline"
+          >
+            Why are these jobs ranked?
+          </button>
+        </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {recommended.map((job) => (
             <JobCard key={job.id} job={job} />

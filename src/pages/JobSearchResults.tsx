@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState, type Dispatch, type ReactNode, type SetStateAction } from "react";
 import { SlidersHorizontal, X } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import { jobs } from "../data/jobs";
 import type { CompanyType, Job, WorkMode } from "../types";
 import JobCard from "../components/JobCard";
@@ -245,6 +246,7 @@ function SkeletonCard() {
 }
 
 export default function JobSearchResults() {
+  const navigate = useNavigate();
   const [filters, setFilters] = useState<Filters>(EMPTY_FILTERS);
   const [sort, setSort] = useState<SortKey>("relevance");
   const [loading, setLoading] = useState(true);
@@ -282,7 +284,7 @@ export default function JobSearchResults() {
                 }. Match scores are estimates — not guarantees of fit.`}
           </p>
         </div>
-        <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center gap-3">
           <button
             type="button"
             className="lg:hidden inline-flex items-center gap-1.5 border border-border-strong hover:bg-primary-soft text-primary rounded-md px-3 py-2 text-sm font-medium"
@@ -306,6 +308,12 @@ export default function JobSearchResults() {
               <option value="date">Date posted</option>
             </select>
           </label>
+          <button
+            onClick={() => navigate("/recommendations")}
+            className="text-sm text-primary hover:underline"
+          >
+            How are jobs ranked?
+          </button>
         </div>
       </div>
 
