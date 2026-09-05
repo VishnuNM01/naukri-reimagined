@@ -20,4 +20,5 @@ export interface Job {
   missingSkills: string[];
   match: number; // 0–100, illustrative only
   confidence: ConfidenceLevel;
+  companyRating: number; // 1–5, illustrative only
 }

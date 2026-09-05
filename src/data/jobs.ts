@@ -17,6 +17,7 @@ export const jobs: Job[] = [
     missingSkills: ["Power BI"],
     match: 87,
     confidence: "high",
+    companyRating: 4.2,
   },
   {
     id: "j2",
@@ -34,6 +35,7 @@ export const jobs: Job[] = [
     missingSkills: [],
     match: 76,
     confidence: "high",
+    companyRating: 3.8,
   },
   {
     id: "j3",
@@ -51,6 +53,7 @@ export const jobs: Job[] = [
     missingSkills: ["Kubernetes", "MLOps"],
     match: 54,
     confidence: "low",
+    companyRating: 4.0,
   },
   {
     id: "j4",
@@ -68,6 +71,7 @@ export const jobs: Job[] = [
     missingSkills: ["Amplitude"],
     match: 68,
     confidence: "medium",
+    companyRating: 4.5,
   },
   {
     id: "j5",
@@ -85,6 +89,7 @@ export const jobs: Job[] = [
     missingSkills: [],
     match: 81,
     confidence: "high",
+    companyRating: 3.5,
   },
   {
     id: "j6",
@@ -102,6 +107,7 @@ export const jobs: Job[] = [
     missingSkills: ["Power BI"],
     match: 71,
     confidence: "medium",
+    companyRating: 3.8,
   },
   {
     id: "j7",
@@ -119,6 +125,7 @@ export const jobs: Job[] = [
     missingSkills: ["Accessibility Testing"],
     match: 79,
     confidence: "high",
+    companyRating: 3.6,
   },
   {
     id: "j8",
@@ -136,6 +143,7 @@ export const jobs: Job[] = [
     missingSkills: ["C++", "Options Pricing"],
     match: 48,
     confidence: "low",
+    companyRating: 4.3,
   },
 ];
 

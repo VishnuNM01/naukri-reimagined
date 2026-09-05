@@ -6,6 +6,7 @@ import Homepage from "./pages/Homepage";
 import JobSearchResults from "./pages/JobSearchResults";
 import AiSearch from "./pages/AiSearch";
 import ResumeAnalysis from "./pages/ResumeAnalysis";
+import Compare from "./pages/Compare";
 import ComingSoon from "./pages/ComingSoon";
 
 export default function App() {
@@ -20,7 +21,7 @@ export default function App() {
             <Route path="/jobs/:id" element={<ComingSoon label="Job Details" />} />
             <Route path="/ai-search" element={<AiSearch />} />
             <Route path="/resume" element={<ResumeAnalysis />} />
-            <Route path="/compare" element={<ComingSoon label="Job Comparison" />} />
+            <Route path="/compare" element={<Compare />} />
             <Route path="/recommendations" element={<ComingSoon label="Recommendation Transparency" />} />
             <Route path="*" element={<ComingSoon label="Not found" />} />
           </Routes>
