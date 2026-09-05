@@ -246,7 +246,11 @@ export default function AiSearch() {
       {/* Input form */}
       <form onSubmit={handleSubmit} className="sticky bottom-0 bg-bg border-t border-border pt-4">
         <div className="flex gap-2">
+          <label className="sr-only" htmlFor="ai-query">
+            Describe what you're looking for
+          </label>
           <input
+            id="ai-query"
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder={isEditing ? "Edit your query..." : "Describe what you're looking for..."}

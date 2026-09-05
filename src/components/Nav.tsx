@@ -1,4 +1,4 @@
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, useLocation } from "react-router-dom";
 
 const items = [
   { to: "/jobs", label: "Jobs" },
@@ -8,6 +8,10 @@ const items = [
 ];
 
 export default function Nav() {
+  const location = useLocation();
+
+  const isJobsActive = location.pathname.startsWith("/jobs");
+
   return (
     <header className="border-b border-border bg-surface">
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
@@ -20,7 +24,7 @@ export default function Nav() {
               key={it.to}
               to={it.to}
               className={({ isActive }) =>
-                `rounded ${isActive ? "text-primary font-medium" : "text-ink-soft hover:text-ink"}`
+                `rounded ${(it.to === "/jobs" ? isJobsActive : isActive) ? "text-primary font-medium" : "text-ink-soft hover:text-ink"}`
               }
             >
               {it.label}

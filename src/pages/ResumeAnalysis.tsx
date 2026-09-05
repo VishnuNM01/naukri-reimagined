@@ -130,11 +130,13 @@ export default function ResumeAnalysis() {
                     <h3 className="font-medium text-ink mb-1">{uncertainField.field}</h3>
                     {fieldState.isEditing ? (
                       <input
+                        id={`edit-${uncertainField.field}`}
                         type="text"
                         value={fieldState.editedValue}
                         onChange={(e) => handleEditChange(uncertainField.field, e.target.value)}
                         className="w-full bg-surface border border-border rounded px-3 py-2 text-sm outline-none focus:border-border-strong"
                         placeholder="Enter the correct value"
+                        aria-label={`Edit ${uncertainField.field}`}
                       />
                     ) : fieldState.isConfirmed ? (
                       <div className="flex items-center gap-2">
