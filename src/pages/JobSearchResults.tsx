@@ -251,6 +251,7 @@ export default function JobSearchResults() {
   const [sort, setSort] = useState<SortKey>("relevance");
   const [loading, setLoading] = useState(true);
   const [filtersOpen, setFiltersOpen] = useState(false);
+  const [highlightedJobId, setHighlightedJobId] = useState<string | null>(null);
 
   useEffect(() => {
     const id = window.setTimeout(() => setLoading(false), 450);
@@ -270,6 +271,18 @@ export default function JobSearchResults() {
   const filterCount = activeFilterCount(filters);
 
   const clearFilters = () => setFilters(EMPTY_FILTERS);
+
+  const highlightLowConfidenceJob = () => {
+    const lowConfidenceJob = results.find((job) => job.confidence === "low");
+    if (lowConfidenceJob) {
+      setHighlightedJobId(lowConfidenceJob.id);
+      const element = document.getElementById(`job-${lowConfidenceJob.id}`);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+      setTimeout(() => setHighlightedJobId(null), 1500);
+    }
+  };
 
   return (
     <main className="max-w-6xl mx-auto px-6 py-8">
@@ -314,6 +327,15 @@ export default function JobSearchResults() {
           >
             How are jobs ranked?
           </button>
+          <button
+            onClick={highlightLowConfidenceJob}
+            className="inline-flex items-center gap-1.5 text-xs text-ink-soft hover:text-ink"
+          >
+            <span className="bg-accent-soft text-accent rounded px-1.5 py-0.5 text-[10px] font-medium uppercase">
+              Demo
+            </span>
+            Show a low-confidence example
+          </button>
         </div>
       </div>
 
@@ -349,7 +371,17 @@ export default function JobSearchResults() {
           ) : (
             <div className="flex flex-col gap-4">
               {results.map((job) => (
-                <JobCard key={job.id} job={job} />
+                <div
+                  key={job.id}
+                  id={`job-${job.id}`}
+                  className={`transition-all duration-1500 ease-out ${
+                    highlightedJobId === job.id
+                      ? "ring-2 ring-danger ring-opacity-75 scale-[1.02]"
+                      : ""
+                  }`}
+                >
+                  <JobCard job={job} />
+                </div>
               ))}
             </div>
           )}

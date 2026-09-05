@@ -32,11 +32,15 @@ export default function AiSearch() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!input.trim()) return;
+    processSubmission(input);
+  };
+
+  const processSubmission = (queryText: string) => {
+    if (!queryText.trim()) return;
 
     const userMessageId = Date.now().toString();
     const aiMessageId = (Date.now() + 1).toString();
-    const currentInput = input;
+    const currentInput = queryText;
 
     const userMessage: Message = {
       id: userMessageId,
@@ -263,6 +267,24 @@ export default function AiSearch() {
           >
             <Send size={16} />
             {isEditing ? "Update" : "Send"}
+          </button>
+        </div>
+        
+        {/* Demo affordance */}
+        <div className="mt-2 text-center">
+          <button
+            type="button"
+            onClick={() => {
+              const vagueQuery = "find me something good";
+              setInput(vagueQuery);
+              processSubmission(vagueQuery);
+            }}
+            className="inline-flex items-center gap-1.5 text-xs text-ink-soft hover:text-ink"
+          >
+            <span className="bg-accent-soft text-accent rounded px-1.5 py-0.5 text-[10px] font-medium uppercase">
+              Demo
+            </span>
+            Try a vague example
           </button>
         </div>
       </form>
