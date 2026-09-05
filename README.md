@@ -29,12 +29,12 @@ Built incrementally, one feature at a time, per the course brief's development r
 | ✅ Done | `/` | Homepage — hero search, popular searches, recommended jobs, explainability sheet |
 | ✅ Done | (global) | "Why this job?" explainability panel (`ExplainSheet`) |
 | ✅ Done | (global) | Confidence badge system (`ConfidenceBadge`) — high / medium / low |
-| 🚧 Placeholder | `/jobs` | Job Search Results — filters, sorting, low-confidence example |
-| 🚧 Placeholder | `/jobs/:id` | Job Details |
-| 🚧 Placeholder | `/ai-search` | Naukri AI — conversational search with confirm-before-search |
-| 🚧 Placeholder | `/resume` | Resume Analysis — AI-detected skills, uncertainty, correction |
-| 🚧 Placeholder | `/compare` | Job Comparison |
-| 🚧 Placeholder | `/recommendations` | Recommendation Transparency / Fairness |
+| ✅ Done | `/jobs` | Job Search Results — filters, sorting, low-confidence example |
+| ✅ Done | `/jobs/:id` | Job Details |
+| ✅ Done | `/ai-search` | Naukri AI — conversational search with confirm-before-search |
+| ✅ Done | `/resume` | Resume Analysis — AI-detected skills, uncertainty, correction |
+| ✅ Done | `/compare` | Job Comparison |
+| ✅ Done | `/recommendations` | Recommendation Transparency / Fairness |
 
 ## Folder structure
 
@@ -67,12 +67,10 @@ with a text label, per the accessibility requirement.
 | Probabilistic systems, trust calibration | Match % + confidence badge on every job card |
 | Explainability vs transparency (XAI) | "Why this job?" panel — reasons, confidence, plain-language "how is this calculated?" |
 | Communicating uncertainty | Confidence badges styled distinctly (color + label + dot), low-confidence jobs shown alongside high-confidence ones |
-| Graceful degradation / recovery dialogue | Planned for `/ai-search` and `/resume` — recovery buttons (View anyway / Update profile / Search manually) |
-| When not to use conversational UI | Manual search fields on the homepage work independently of the AI-search entry point |
-| Human control | Every AI surface pairs with a manual alternative and an edit/correct action |
-| Algorithmic bias & fairness | Planned `/recommendations` page — visible ranking-factor breakdown, fairness explainer |
-
-This table will grow as each remaining page is built.
+| Graceful degradation / recovery dialogue | AI Search uncertainty state (`src/pages/AiSearch.tsx`) asks specific follow-up questions; Job Search empty-results state offers clear filters; Resume Analysis lets users correct uncertain fields |
+| When not to use conversational UI | Manual search fields on the homepage work independently of the AI-search entry point; persistent note on AI Search page emphasizes optional use |
+| Human control | Every AI surface pairs with a manual alternative and an edit/correct action (AI Search → manual search link; Resume Analysis → edit/correct fields; Compare → no winner declaration) |
+| Algorithmic bias & fairness | RecommendationTransparency.tsx — visible ranking-factor breakdown, fairness explainer with concrete bias examples |
 
 ## Mock AI approach
 
@@ -80,16 +78,10 @@ There is no real backend, database, or ML model. "AI behaviour" (match scores, c
 levels, detected skills, conversational parsing) is simulated with static mock data
 (`src/data/jobs.ts`) and deterministic frontend logic, per the assignment's constraints.
 
-## Continuing this project
+## Possible future improvements
 
-Suggested build order for the remaining pages (matches the original plan):
-1. `/jobs` — Job Search Results (filters + sort + a visible low-confidence card)
-2. `/jobs/:id` — Job Details
-3. `/ai-search` — conversational search with the "confirm before searching" pattern
-4. `/resume` — resume analysis with uncertainty + correction
-5. `/compare` — side-by-side job comparison table
-6. `/recommendations` — ranking transparency + fairness explainer
-
-Each new page should follow the existing pattern: add the mock data it needs to
-`src/data/`, add types to `src/types.ts` if needed, build the page in `src/pages/`, and
-swap its `ComingSoon` route in `src/App.tsx` for the real component.
+- Persist user corrections from Resume Analysis (localStorage or backend)
+- Add a real backend with actual job data and user profiles
+- Implement saved jobs and application tracking
+- Add more sophisticated query parsing for AI Search
+- Expand the bias/fairness explainer with interactive examples
