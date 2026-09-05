@@ -1,5 +1,9 @@
 export type ConfidenceLevel = "high" | "medium" | "low";
 
+export type CompanyType = "Product" | "Startup" | "Fintech" | "Retail" | "Services";
+
+export type WorkMode = "Remote" | "Hybrid" | "On-site";
+
 export interface Job {
   id: string;
   title: string;
@@ -7,7 +11,11 @@ export interface Job {
   location: string;
   experience: string;
   salary: string;
-  workMode: "Remote" | "Hybrid" | "On-site";
+  salaryMin: number; // LPA, for range filters and salary sort
+  salaryMax: number;
+  workMode: WorkMode;
+  companyType: CompanyType;
+  postedDaysAgo: number;
   skills: string[];
   missingSkills: string[];
   match: number; // 0–100, illustrative only

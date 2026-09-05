@@ -1,0 +1,1 @@
+{"root":["./src/app.tsx","./src/main.tsx","./src/types.ts","./src/components/confidencebadge.tsx","./src/components/explainsheet.tsx","./src/components/jobcard.tsx","./src/components/nav.tsx","./src/context/explaincontext.tsx","./src/data/jobs.ts","./src/pages/comingsoon.tsx","./src/pages/homepage.tsx","./src/pages/jobsearchresults.tsx"],"version":"5.9.3"}

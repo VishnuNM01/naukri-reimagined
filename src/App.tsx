@@ -3,6 +3,7 @@ import Nav from "./components/Nav";
 import ExplainSheet from "./components/ExplainSheet";
 import { ExplainProvider } from "./context/ExplainContext";
 import Homepage from "./pages/Homepage";
+import JobSearchResults from "./pages/JobSearchResults";
 import ComingSoon from "./pages/ComingSoon";
 
 export default function App() {
@@ -13,7 +14,7 @@ export default function App() {
         <div className="flex-1">
           <Routes>
             <Route path="/" element={<Homepage />} />
-            <Route path="/jobs" element={<ComingSoon label="Job Search Results" />} />
+            <Route path="/jobs" element={<JobSearchResults />} />
             <Route path="/jobs/:id" element={<ComingSoon label="Job Details" />} />
             <Route path="/ai-search" element={<ComingSoon label="Naukri AI — Conversational Search" />} />
             <Route path="/resume" element={<ComingSoon label="Resume Analysis" />} />
